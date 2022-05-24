@@ -5,6 +5,7 @@ import { CloseButton } from "../CloseButton";
 import { useState } from "react";
 import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
+import { FeedbackSuccessStep } from "./Steps/FeedbackSuccessStep";
 
 export const feedbackTypes = {
   BUG: {
@@ -50,16 +51,24 @@ export function WidgetForm() {
   return (
     <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
       
-      {/* key e value foram desestruturados, poderia ser assim (item) que pegaria o value completo do array */}
-     {!feedbackType ? (
+     { feedbackSent ?(
+       <FeedbackSuccessStep />
+     ) : (
+       <>
+        {!feedbackType ? (
         <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType}/>
      ) : (
        <FeedbackContentStep 
        feedbackType={feedbackType}
        onFeedbackRestartRequested = {handleRestartFeedback}
+       onFeedbackSent={()=> setFeedbackSent(true)}
        />
      )}
+       </>
+     )}
 
+      {/* key e value foram desestruturados, poderia ser assim (item) que pegaria o value completo do array */}
+    
       <footer className="text-xs text-neutral-400">
         feito com ♡. projeto da rockeseat
       </footer>
