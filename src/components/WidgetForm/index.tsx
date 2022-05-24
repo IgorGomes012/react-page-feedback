@@ -70,7 +70,7 @@ export function WidgetForm() {
       {/* key e value foram desestruturados, poderia ser assim (item) que pegaria o value completo do array */}
     
       <footer className="text-xs text-neutral-400">
-        feito com ♡. projeto da rockeseat
+        feito com ♡.
       </footer>
     </div>
 
